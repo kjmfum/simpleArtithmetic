@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">My Math</string>
+
+
+    <string name="rate_dialog_message">If you enjoy this app, please give us a 5 star rating to support us. You can also leave a nice review to encourage us</string>
+    <string name="rate_dialog_ok">Give us 5 stars</string>
+
+
+    <string name="adMobAppID">  "ca-app-pub-7384642419407303~9366077062" </string>
+    <string name="TestAdUnitInterstitialID"> "ca-app-pub-3940256099942544/1033173712"</string>
+    <string name="TestAdUnitBannerID">  "ca-app-pub-3940256099942544/6300978111"</string>
+    <string name="AdUnitBannerID">  "ca-app-pub-7384642419407303/8165703709"</string>
+    <string name="AdUnitInterstitialID">  "ca-app-pub-7384642419407303/4594188966"</string>
+
+
+    <string-array name="ArithmeticTypes">
+        <item> Multiplication </item>
+        <item> Addition </item>
+        <item> Division </item>
+        <item> Subtraction </item>
+    </string-array>
+
+    <string-array name="Description">
+        <item> Multiply </item>
+        <item> Add </item>
+        <item> Divide </item>
+        <item> Subtract </item>
+    </string-array>
+
+</resources>

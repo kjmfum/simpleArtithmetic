@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.learnakantwi.simplearithmetic">
+
+
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <application
+        android:name=".AppStartClass"
+        android:allowBackup="true"
+        android:icon="@drawable/simplemathicon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".OneMinuteMultiplicationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".OneMinuteSubtractionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".OneMinuteAdditionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".OneMinuteDivisionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".OneMinuteDivisionHome"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".OneMinuteMultiplicationHome"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".OneMinuteSubtractionHome"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".OneMinuteHomeAddition"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".OneMinuteMain"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RecyclerViewExample" />
+        <activity android:name=".MultiplicationTableActivity" />
+        <activity android:name=".MultiplicationTableMain" />
+        <activity
+            android:name=".DivisionRangeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DivisionMainRangeOnly"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SubtractionRangeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SubtractionNumberRangeMain"
+            android:screenOrientation="portrait" />
+        <activity android:name=".SubtractionHighScores" />
+        <activity
+            android:name=".SubtractionFinishPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SubtractionActivityCountdown"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SubtractionCountdownMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SubtractionMain1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DivisionHighScores"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DivisionFinishPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DivisionCountdownMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DivisionActivityCountdown"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DivisionMain1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MultiplicationHighScores"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MultiplicationFinishPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MultiplicationActivityCountdown"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MultiplicationCountdownMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MultiplicationRangeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MultiplicationNumberRangeMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MultiplicationHome"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdditionHighScores"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdditionCountdownMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdditionRangeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdditionNumberRangeMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdditionActivityCountdown"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdditionHome"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdditionFinishPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DivisionMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DivisionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MultiplicationRangeOnlyMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MultiplicationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SubtractionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SubtractionRangeOnlyMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".additionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdditionRangeOnlyMain"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".Notification_receiver"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-7384642419407303~9366077062" />
+    </application>
+
+</manifest>
