@@ -47,6 +47,7 @@ public class DivisionActivityCountdown extends AppCompatActivity {
     int counter=0;
     int level=1;
     int best5;
+    int Lifetime;
 
     String firstPick;
     StringBuilder sb = new StringBuilder();
@@ -804,9 +805,30 @@ public class DivisionActivityCountdown extends AppCompatActivity {
 
         testID = getString(R.string.AdUnitInterstitialID);
 
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(testID);
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        SharedPreferences subscribe = getSharedPreferences("AdsDecisionSimpleArithmetic",MODE_PRIVATE);
+        Lifetime = subscribe.getInt("Lifetime", 4);
+
+        if (Lifetime != 0){
+            mInterstitialAd = new InterstitialAd(this);
+            mInterstitialAd.setAdUnitId(testID);
+            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
+
+        /*
+
+         */
+
 
         countDownTimer = new CountDownTimer(1000 * 60 * 1, 1000) {
             @Override
@@ -831,14 +853,6 @@ public class DivisionActivityCountdown extends AppCompatActivity {
             }
         });
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
         Intent intent = getIntent();
         min= intent.getIntExtra("min",0);
@@ -905,8 +919,10 @@ public class DivisionActivityCountdown extends AppCompatActivity {
     protected void onDestroy() {
         int prob = random.nextInt(10);
 
-        if (prob<5){
-            advert1();
+        if (prob<6){
+            if (Lifetime != 0){
+                advert1();
+            }
         }
         countDownTimer.cancel();
         super.onDestroy();

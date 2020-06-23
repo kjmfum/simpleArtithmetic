@@ -4,6 +4,10 @@
 
 
     <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:name=".AppStartClass"
@@ -33,6 +37,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".RecyclerViewExample" />
         <activity android:name=".MultiplicationTableActivity" />
+        <activity android:name=".MultiplicationTableActivityBase" />
         <activity android:name=".MultiplicationTableMain" />
         <activity
             android:name=".DivisionRangeActivity"
@@ -140,7 +145,8 @@
         <activity
             android:name=".AdditionRangeOnlyMain"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

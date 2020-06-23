@@ -50,6 +50,7 @@ public class AdditionActivityCountdown extends AppCompatActivity {
     int counter=0;
     int level=1;
     int best5;
+    int Lifetime;
 
     public InterstitialAd mInterstitialAd;
 
@@ -854,9 +855,29 @@ public class AdditionActivityCountdown extends AppCompatActivity {
 
         testID = getString(R.string.AdUnitInterstitialID);
 
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(testID);
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        SharedPreferences subscribe = getSharedPreferences("AdsDecisionSimpleArithmetic",MODE_PRIVATE);
+        Lifetime = subscribe.getInt("Lifetime", 4);
+
+        if (Lifetime != 0){
+            mInterstitialAd = new InterstitialAd(this);
+            mInterstitialAd.setAdUnitId(testID);
+            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
+
+        /*
+
+         */
 
         countDownTimer = new CountDownTimer(1000 * 60 * 1, 1000) {
             @Override
@@ -895,9 +916,7 @@ public class AdditionActivityCountdown extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+
 
         Intent intent = getIntent();
         min= intent.getIntExtra("min",0);
@@ -957,84 +976,16 @@ public class AdditionActivityCountdown extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+
+       // Random random = new Random();
         int prob = random.nextInt(10);
 
-        if (prob<5){
-            advert1();
+        if (prob<6){
+            if (Lifetime != 0){
+                advert1();
+            }
         }
         super.onDestroy();
     }
 
-   /* @Override
-    protected void onResume() {
-        countDownTimer = new CountDownTimer(milisecondsUntilFinished,1000) {
-            //countDownTimer = new CountDownTimer(1000*20,1000) {
-            @Override
-            public void onTick(long l) {
-                //tvCountdown.setText(5+ " : "+ 00);
-
-                milisecondsUntilFinished = l;
-              //  if (timerCheck){
-                    int minutes = ((int)l/60000);
-                    int seconds = (int)(l- minutes*60000)/1000;
-                    tvCountdown.setText(minutes+ " : "+ seconds);
-                    if (minutes==0 && seconds<=30){
-                        tvCountdown.setTextColor(Color.RED);
-                    }
-                    if (minutes==0 && seconds==1){
-                        tvCountdown.setText("00 : 00");
-                    }
-                }
-
-            //}
-
-
-
-            @Override
-            public void onFinish() {
-
-                SharedPreferences preferences = getSharedPreferences("PREFS", MODE_PRIVATE);
-                SharedPreferences preferences2 = getSharedPreferences("PREFS2", MODE_PRIVATE);
-                SharedPreferences preferences3 = getSharedPreferences("PREFS3", MODE_PRIVATE);
-                SharedPreferences preferences4 = getSharedPreferences("PREFS4", MODE_PRIVATE);
-                SharedPreferences preferences5 = getSharedPreferences("PREFS5", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt("lastScore", correctScores);
-                editor.putInt("attempts", wrongScores+correctScores);
-                editor.apply();
-
-
-                switch (level){
-                    case 1:
-                        best5 = preferences.getInt("best5",0);
-                        //Toast.makeText(AdditionActivityCountdown.this, "Hi best 5: " + best5, Toast.LENGTH_SHORT).show();
-                        //Toast.makeText(AdditionActivityCountdown.this, "Hi correctScores: " + correctScores, Toast.LENGTH_SHORT).show();
-
-                        goToFinishPage();
-                        return;
-                    case 2:
-                        best5 = preferences2.getInt("best5",0);
-                        goToFinishPage();
-                        return;
-                    case 3:
-                        best5 = preferences3.getInt("best5",0);
-                        goToFinishPage();
-                        return;
-                    case 4:
-                        best5 = preferences4.getInt("best5",0);
-                        goToFinishPage();
-                        return;
-                    case 5:
-                        best5 = preferences5.getInt("best5",0);
-                        goToFinishPage();
-                        return;
-                    default:
-                        best5 = 0;
-                }
-
-            }
-        };
-        countDownTimer.start();
-        super.onResume();
-    }*/
 }

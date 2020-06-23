@@ -736,14 +736,23 @@ public class SubtractionActivityCountdown extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subtraction_countdown);
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        testID = getString(R.string.AdUnitInterstitialID);
+
+        if (MainActivity.Lifetime != 0){
+            mInterstitialAd = new InterstitialAd(this);
+            mInterstitialAd.setAdUnitId(testID);
+            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
 
         countDownTimer = new CountDownTimer(1000 * 60 * 1, 1000) {
             @Override

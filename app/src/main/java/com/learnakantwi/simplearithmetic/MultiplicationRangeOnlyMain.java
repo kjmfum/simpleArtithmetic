@@ -181,14 +181,16 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
             tvNegative = findViewById(R.id.tvNegative);
             tvNegative.setText("Tap to INCLUDE NEGATIVE Integers");
 
-            MobileAds.initialize(this, new OnInitializationCompleteListener() {
-                @Override
-                public void onInitializationComplete(InitializationStatus initializationStatus) {
-                }
-            });
-            mAdView = findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
+            if (MainActivity.Lifetime != 0){
+                MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                    @Override
+                    public void onInitializationComplete(InitializationStatus initializationStatus) {
+                    }
+                });
+                mAdView = findViewById(R.id.adView);
+                AdRequest adRequest = new AdRequest.Builder().build();
+                mAdView.loadAd(adRequest);
+            }
 
           /*  btGoToAdditionActivity = findViewById(R.id.bt0to9);
 

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MultiplicationTableActivity">
+
+    <!--   <ListView
+        android:id="@+id/lvtwoLetters"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline42">
+    </ListView>-->
+
+
+    <TextView
+        android:id="@+id/tvTwoLetterHeader"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="AKWAABA"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_toTopOf="@+id/Horguideline8">
+
+    </TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btSlideShow"
+        app:layout_constraintVertical_bias="0.0">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="SMART_BANNER"
+        app:adUnitId="@string/AdUnitBannerID"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btSlideShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start SlideShow"
+        app:layout_constraintBottom_toTopOf="@id/guideline42"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/tvTwoLetterHeader"
+        app:layout_constraintTop_toBottomOf="@id/tvTwoLetterHeader" />
+
+    <!--Button
+        android:id="@+id/btSlides"
+        android:layout_width="295dp"
+        android:layout_height="71dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTwoLetterHeader"
+        app:layout_constraintVertical_bias="0.271" />-->
+
+    <TextView
+        android:id="@+id/tvSlides"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="Times Slideshow"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Horguideline80"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/Horguideline30" />
+
+
+    <ImageButton
+        android:id="@+id/pauseButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:src="@drawable/ic_pause_circle_outline_black_24dp"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintEnd_toEndOf="@id/Verguideline60"
+        app:layout_constraintStart_toStartOf="@id/Verguideline40"
+        app:layout_constraintTop_toBottomOf="@id/tvSlides" />
+
+    <ImageButton
+        android:id="@+id/playNext"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:src="@drawable/ic_fast_forward"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintEnd_toEndOf="@id/Verguideline80"
+        app:layout_constraintStart_toStartOf="@id/Verguideline60"
+        app:layout_constraintTop_toBottomOf="@id/tvSlides"  />
+
+    <ImageButton
+        android:id="@+id/playButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:src="@drawable/ic_play_circle_outline_black_24dp"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintEnd_toEndOf="@id/Verguideline60"
+        app:layout_constraintStart_toStartOf="@id/Verguideline40"
+        app:layout_constraintTop_toBottomOf="@id/tvSlides"  />
+
+    <ImageButton
+        android:id="@+id/playPrevious"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:src="@drawable/ic_fast_rewind"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintEnd_toEndOf="@id/Verguideline40"
+        app:layout_constraintStart_toStartOf="@id/Verguideline20"
+        app:layout_constraintTop_toBottomOf="@id/tvSlides"  />
+
+    <ImageButton
+        android:id="@+id/playRepeatOne"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:src="@drawable/ic_repeat_one"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/Verguideline80"
+        app:layout_constraintTop_toBottomOf="@id/tvSlides"  />
+
+    <!--<EditText
+        android:id="@+id/etStartNumber"
+        android:layout_width="102dp"
+        android:layout_height="46dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@id/tvSlides"
+
+        app:layout_constraintStart_toStartOf="@+id/tvSlides"
+        tools:layout_editor_absoluteY="133dp" />-->
+
+    <!-- <EditText
+        android:id="@+id/etEndNumber"
+        android:layout_width="102dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="54dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/etStartNumber"
+        app:layout_constraintEnd_toEndOf="@+id/tvSlides"
+        app:layout_constraintStart_toEndOf="@+id/etStartNumber" />
+-->
+    <!--<TextView
+        android:id="@+id/tvStartNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Number"
+        app:layout_constraintBottom_toTopOf="@+id/etStartNumber"
+        app:layout_constraintEnd_toEndOf="@+id/etStartNumber"
+        app:layout_constraintStart_toStartOf="@+id/etStartNumber"
+        app:layout_constraintTop_toTopOf="@id/guideline42" />
+
+    <TextView
+        android:id="@+id/tvEndNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Number"
+        app:layout_constraintBottom_toTopOf="@+id/etEndNumber"
+        app:layout_constraintEnd_toEndOf="@+id/etEndNumber"
+        app:layout_constraintStart_toStartOf="@+id/etEndNumber"
+        app:layout_constraintTop_toTopOf="@id/guideline42" />-->
+
+    <!--  <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupSlide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tvSlides,etStartNumber,etEndNumber,tvStartNumber,tvEndNumber" />-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Horguideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Horguideline30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Horguideline80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Horguideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Verguideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Verguideline40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Verguideline60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/Verguideline80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <!-- Test: app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+
+       app:adUnitId="ca-app-pub-7384642419407303/8165703709"-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

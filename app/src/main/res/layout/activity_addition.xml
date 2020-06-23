@@ -15,11 +15,12 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         app:adSize="SMART_BANNER"
-        app:adUnitId="ca-app-pub-7384642419407303/8165703709"
+        app:adUnitId="@string/AdUnitBannerID"
         app:layout_constraintBottom_toBottomOf="@+id/Horguideline10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 
     <androidx.constraintlayout.widget.Guideline

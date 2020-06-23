@@ -3,6 +3,7 @@ package com.learnakantwi.simplearithmetic;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -33,6 +35,7 @@ public class OneMinuteDivisionHome extends AppCompatActivity {
     int minimum = 0;
     int maximum = 10;
     int divisor=1;
+    int Lifetime;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -177,14 +180,20 @@ public class OneMinuteDivisionHome extends AppCompatActivity {
         tvChooseDivisor= findViewById(R.id.tvDivisor);
         tvChooseRange= findViewById(R.id.tvRange);
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        SharedPreferences subscribe = getSharedPreferences("AdsDecisionSimpleArithmetic",MODE_PRIVATE);
+        Lifetime = subscribe.getInt("Lifetime", 4);
+
+        if (Lifetime != 0){
+
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
 
     }
 }

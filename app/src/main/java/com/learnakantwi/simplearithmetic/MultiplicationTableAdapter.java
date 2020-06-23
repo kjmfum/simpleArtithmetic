@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -55,6 +56,8 @@ public class MultiplicationTableAdapter extends BaseAdapter {
         //textView.setText(originalArray.get(position));
         //textView1.setText(originalArray.get(position).toLowerCase());
         textView1.setText(originalArray.get(position).toString());
+        String text = textView1.getText().toString();
+
         //if image would have been --- setImageResource.
 
         return convertView;

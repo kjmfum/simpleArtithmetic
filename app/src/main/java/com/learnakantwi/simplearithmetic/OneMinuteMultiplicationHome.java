@@ -3,6 +3,7 @@ package com.learnakantwi.simplearithmetic;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ public class OneMinuteMultiplicationHome extends AppCompatActivity {
     int minimum = 0;
     int maximum = 10;
     int divisor=1;
+    int Lifetime;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -182,14 +184,20 @@ public class OneMinuteMultiplicationHome extends AppCompatActivity {
         tvChooseDivisor= findViewById(R.id.tvDivisor);
         tvChooseRange= findViewById(R.id.tvRange);
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        SharedPreferences subscribe = getSharedPreferences("AdsDecisionSimpleArithmetic",MODE_PRIVATE);
+        Lifetime = subscribe.getInt("Lifetime", 4);
+
+        if (Lifetime != 0){
+
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
     }
 
     @Override

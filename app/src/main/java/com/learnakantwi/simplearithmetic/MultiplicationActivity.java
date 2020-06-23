@@ -3,6 +3,7 @@ package com.learnakantwi.simplearithmetic;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -45,6 +46,7 @@ public class MultiplicationActivity extends AppCompatActivity {
     int range =(max-min)+1;
     int counter=0;
     int i = 0;
+    int Lifetime;
 
     String firstPick;
     StringBuilder sb = new StringBuilder();
@@ -702,7 +704,9 @@ public class MultiplicationActivity extends AppCompatActivity {
             chronometer.stop();
             timerCheck=false;
             btPause.setText("RESUME");
-            //advert1();
+            if(MainActivity.Lifetime !=0){
+                advert1();
+            }
             btReset.setVisibility(View.VISIBLE);
             String text = etAnswer.getText().toString();
             if (!text.isEmpty()){
@@ -773,23 +777,34 @@ public class MultiplicationActivity extends AppCompatActivity {
 
         testID = getString(R.string.AdUnitInterstitialID);
 
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(testID);
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        SharedPreferences subscribe = getSharedPreferences("AdsDecisionSimpleArithmetic",MODE_PRIVATE);
+        Lifetime = subscribe.getInt("Lifetime", 4);
+
+        if (Lifetime != 0){
+            mInterstitialAd = new InterstitialAd(this);
+            mInterstitialAd.setAdUnitId(testID);
+            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
+
+        /*
+
+         */
 
         btReset = findViewById(R.id.btReset);
         btReset.setVisibility(View.INVISIBLE);
         btPause = findViewById(R.id.btPause);
 
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
         Intent intent = getIntent();
         min= intent.getIntExtra("min",0);
@@ -903,8 +918,10 @@ public class MultiplicationActivity extends AppCompatActivity {
     protected void onDestroy() {
         int prob = random.nextInt(10);
 
-        if (prob<5){
-            advert1();
+        if (prob<6){
+            if (Lifetime != 0){
+                advert1();
+            }
         }
         super.onDestroy();
     }

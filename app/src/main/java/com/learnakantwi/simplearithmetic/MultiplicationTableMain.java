@@ -32,6 +32,7 @@ public class MultiplicationTableMain extends AppCompatActivity {
 
     public void goToTwoLetters() {
         // Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.udemy.com/course/learn-akan-twi/?referralCode=6D321CE6AEE1834CCB0F"));
+       // Intent intent = new Intent(this, MultiplicationTableActivityBase.class);
         Intent intent = new Intent(this, MultiplicationTableActivity.class);
         intent.putExtra("vowel", vowel);
         startActivity(intent);
@@ -42,14 +43,16 @@ public class MultiplicationTableMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplication_table_main);
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        if (MainActivity.Lifetime != 0){
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
 
         numbersArray = new ArrayList<>();
 

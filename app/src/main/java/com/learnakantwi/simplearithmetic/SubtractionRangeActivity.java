@@ -649,7 +649,9 @@ public class SubtractionRangeActivity extends AppCompatActivity {
             chronometer.stop();
             timerCheck=false;
             btPause.setText("RESUME");
-            //advert1();
+            if(MainActivity.Lifetime !=0){
+                advert1();
+            }
             btReset.setVisibility(View.VISIBLE);
             String text = etAnswer.getText().toString();
             if (!text.isEmpty()){
@@ -725,23 +727,26 @@ public class SubtractionRangeActivity extends AppCompatActivity {
 
         testID = getString(R.string.AdUnitInterstitialID);
 
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(testID);
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        if (MainActivity.Lifetime != 0){
+            mInterstitialAd = new InterstitialAd(this);
+            mInterstitialAd.setAdUnitId(testID);
+            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
 
         btReset = findViewById(R.id.btReset);
         btReset.setVisibility(View.INVISIBLE);
         btPause = findViewById(R.id.btPause);
 
-
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
 
         Intent intent = getIntent();
@@ -818,8 +823,10 @@ public class SubtractionRangeActivity extends AppCompatActivity {
     protected void onDestroy() {
         int prob = random.nextInt(10);
 
-        if (prob<5){
-            advert1();
+        if (prob<7){
+            if (MainActivity.Lifetime != 0){
+                advert1();
+            }
         }
         super.onDestroy();
     }

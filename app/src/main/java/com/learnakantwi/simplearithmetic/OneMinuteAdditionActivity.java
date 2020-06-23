@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.Group;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ public class OneMinuteAdditionActivity extends AppCompatActivity {
     int range =(max-min)+1;
     int counter=0;
     int numberToAdd;
+    int Lifetime;
 
     String firstPick;
     StringBuilder sb = new StringBuilder();
@@ -758,9 +760,24 @@ public class OneMinuteAdditionActivity extends AppCompatActivity {
 
         testID = getString(R.string.AdUnitInterstitialID);
 
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(testID);
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        SharedPreferences subscribe = getSharedPreferences("AdsDecisionSimpleArithmetic",MODE_PRIVATE);
+        Lifetime = subscribe.getInt("Lifetime", 4);
+
+        if (Lifetime != 0){
+            mInterstitialAd = new InterstitialAd(this);
+            mInterstitialAd.setAdUnitId(testID);
+            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
 
         btReset = findViewById(R.id.btReset);
         btReset.setVisibility(View.INVISIBLE);
@@ -778,14 +795,6 @@ public class OneMinuteAdditionActivity extends AppCompatActivity {
         };
 
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
         Intent intent = getIntent();
         min= intent.getIntExtra("min",0);
@@ -854,8 +863,10 @@ public class OneMinuteAdditionActivity extends AppCompatActivity {
     protected void onDestroy() {
         int prob = random.nextInt(10);
 
-        if (prob<5){
-            advert1();
+        if (prob<6){
+            if (Lifetime != 0){
+                advert1();
+            }
         }
         super.onDestroy();
     }
