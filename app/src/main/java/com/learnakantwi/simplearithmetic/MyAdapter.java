@@ -1,6 +1,7 @@
 package com.learnakantwi.simplearithmetic;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -17,28 +18,12 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-    String data1[], data2[] ;
-    Context context;
-    int image [];
-
-    Arithmetic arithmetic;
 
     ArrayList<Arithmetic> arithmeticArrayList;
     ArrayList<String> arrayList;
     onClickRecycle onClickRecycle;
     LayoutInflater inflater;
-
-    public MyAdapter(String[] data1, String[] data2, Context context, int[] image) {
-        this.data1 = data1;
-        this.data2 = data2;
-        this.context = context;
-        this.image = image;
-    }
-
-    public MyAdapter(ArrayList<Arithmetic> arrayList, Context context) {
-        this.context = context;
-        this.arithmeticArrayList = arrayList;
-    }
+    Context context;
 
     public MyAdapter(Context context, ArrayList<String> arrayList, onClickRecycle onClickRecycle) {
         this.context = context;
@@ -101,12 +86,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public void onClick(View view) {
            String myText = myText1.getText().toString();
 //
+            final ColorStateList originalColor = myText1.getTextColors();
            myText1.setTextColor(Color.GREEN);
            myText1.setBackgroundColor(Color.BLUE);
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    myText1.setTextColor(Color.DKGRAY);
+                   // myText1.setTextColor(Color.DKGRAY);
+                    myText1.setTextColor(originalColor);
                     myText1.setBackgroundColor(Color.WHITE);
                 }
             },1500);

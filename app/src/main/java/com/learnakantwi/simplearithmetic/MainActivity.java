@@ -62,6 +62,9 @@ Button btAddition;
 Button btSubtraction;
 Button btMultiplication;
 Button btDivision;
+    Button btMultiplicationTable;
+
+
 Button btNoAds;
 Toast toast;
     AdView mAdView;
@@ -241,6 +244,11 @@ Toast toast;
         startActivity(intent);
     }
 
+    public void goToMultiplicationTable(){
+        Intent intent = new Intent(this, MultiplicationTableMain.class);
+        startActivity(intent);
+    }
+
     public void goToDivision(){
         Intent intent = new Intent(this, DivisionMain1.class);
         startActivity(intent);
@@ -265,6 +273,9 @@ public void goToAritmetic(View view){
             return;
         case "DIVISION" :
             goToDivision();
+            return;
+        case "LISTEN TO AUDIO OF MULTIPLICATION TABLE" :
+            goToMultiplicationTable();
             return;
         default:
             toast.setText(arithmeticType);
@@ -691,6 +702,7 @@ public void goToAritmetic(View view){
         btSubtraction = findViewById(R.id.btSubtraction);
         btMultiplication = findViewById(R.id.btMultiplication);
         btDivision = findViewById(R.id.btDivision);
+        btMultiplicationTable = findViewById(R.id.btListenMultiplicationTable);
     }
 
 
