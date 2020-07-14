@@ -18,12 +18,20 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
+    Context context;
+
+    Arithmetic arithmetic;
 
     ArrayList<Arithmetic> arithmeticArrayList;
     ArrayList<String> arrayList;
     onClickRecycle onClickRecycle;
     LayoutInflater inflater;
-    Context context;
+
+
+    public MyAdapter(ArrayList<Arithmetic> arrayList, Context context) {
+        this.context = context;
+        this.arithmeticArrayList = arrayList;
+    }
 
     public MyAdapter(Context context, ArrayList<String> arrayList, onClickRecycle onClickRecycle) {
         this.context = context;
