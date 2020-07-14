@@ -56,7 +56,8 @@ import java.util.Map;
 import hotchemi.android.rate.AppRate;
 import static com.learnakantwi.simplearithmetic.MultiplicationTableActivity.Numbers;
 
-public class MainActivity extends AppCompatActivity implements PurchasesUpdatedListener, PurchaseHistoryResponseListener {
+//public class MainActivity extends AppCompatActivity implements PurchasesUpdatedListener, PurchaseHistoryResponseListener {
+public class MainActivity extends AppCompatActivity  {
 
 Button btAddition;
 Button btSubtraction;
@@ -284,7 +285,7 @@ public void goToAritmetic(View view){
 }
 
 
-    public void setUpBillingClient(String subName) {
+ /*   public void setUpBillingClient(String subName) {
        // if (subName.contains("remove_ads")){
             // if (subName.contains("likoio")){
 
@@ -294,7 +295,7 @@ public void goToAritmetic(View view){
                     .build();
             setUpBillingLifetime(subName);
 
-            /*billingClient = BillingClient.newBuilder(this)
+            *//*billingClient = BillingClient.newBuilder(this)
                     .setListener(this)
                     .enablePendingPurchases()
                     .build();
@@ -306,7 +307,7 @@ public void goToAritmetic(View view){
                     .enablePendingPurchases()
                     .build();
             setUpBillingLifetime(subName);
-        }*/
+        }*//*
 
 
     }
@@ -358,9 +359,9 @@ public void goToAritmetic(View view){
                                                     billingClient.launchBillingFlow(MainActivity.this, flowParams);
                                                     // BillingResult responseCode = billingClient.launchBillingFlow(InAppActivity.this,flowParams);
                                                     // Toast.makeText(InAppActivity.this, "I got it done "+ subName , Toast.LENGTH_SHORT).show();
-                                                } /*else if ("premium_annually".equals(sku)) {
+                                                } *//*else if ("premium_annually".equals(sku)) {
                                                 premiumUpgradePrice = price;
-                                            }*/
+                                            }*//*
                                             }
                                         }
                                         else
@@ -443,8 +444,8 @@ public void goToAritmetic(View view){
                         toast.setText("Acknowleged");
                         toast.show();
 
-                        /*Intent intent = new Intent(getApplicationContext(), SubPHomeMainActivity.class);
-                        startActivity(intent);*/
+                        *//*Intent intent = new Intent(getApplicationContext(), SubPHomeMainActivity.class);
+                        startActivity(intent);*//*
                     }
 
                 };
@@ -558,7 +559,7 @@ public void goToAritmetic(View view){
 
             }
         });
-    }
+    }*/
 
     public void downloadAll(){
 
@@ -650,7 +651,7 @@ public void goToAritmetic(View view){
 
         Lifetime = sharedPreferencesAds.getInt("Lifetime",4);
 
-        if (Lifetime == 0){
+     /*   if (Lifetime == 0){
              btNoAds.setVisibility(View.GONE);
             //btNoAds.setVisibility(View.VISIBLE);
         }
@@ -665,7 +666,7 @@ public void goToAritmetic(View view){
                 setUpBillingClient("remove_ads");
                 //setUpBillingClient("math_try");
             }
-        });
+        });*/
 
 
     /*    Intent intent = new Intent(this, RecyclerViewExample.class);
