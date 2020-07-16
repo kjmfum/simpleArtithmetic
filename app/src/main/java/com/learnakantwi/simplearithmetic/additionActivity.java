@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
@@ -106,33 +107,6 @@ public class additionActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.main_menu, menu);
 
         return super.onCreateOptionsMenu(menu);
-
-
-        /*final MenuItem item = menu.findItem(R.id.menusearch);
-        SearchView searchView = (SearchView) item.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(AlphabetsActivity.this, query, Toast.LENGTH_SHORT).show();
-                return false;
-            }
-*/
-           /* @Override
-            public boolean onQueryTextChange(String newText) {
-                ArrayList<Alphabets> results = new ArrayList<>();
-                for (Alphabets x: alphabetArray){
-
-                    if(x.getBoth().contains(newText)){
-                        results.add(x);
-                    }
-
-                    ((AlphabetAdapter)myListView.getAdapter()).update(results);
-                }*/
-
-
-        /*        return false;
-            }
-        });*/
 
     }
 
@@ -1088,46 +1062,22 @@ public class additionActivity extends AppCompatActivity {
         btPause = findViewById(R.id.btPause);
 
 
-
-        // int Lifetime;
-        //SharedPreferences subscribe = getSharedPreferences("AdsDecisionSimpleArithmetic",MODE_PRIVATE);
-       // MainActivity.Lifetime = subscribe.getInt("Lifetime", 4);
-
         if (MainActivity.Lifetime != 0){
             mInterstitialAd = new InterstitialAd(this);
             mInterstitialAd.setAdUnitId(testID);
             mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
 
-            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            Appodeal.show(this, Appodeal.BANNER_TOP);
+           /* MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {
                 }
             });
             mAdView = findViewById(R.id.adView);
             AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
+            mAdView.loadAd(adRequest);*/
         }
-
-        /*
-         if (MainActivity.Lifetime != 0){
-
-            MobileAds.initialize(this, new OnInitializationCompleteListener() {
-                @Override
-                public void onInitializationComplete(InitializationStatus initializationStatus) {
-                }
-            });
-            mAdView = findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
-        }
-         */
-
-
-         /*  if (MainActivity.Lifetime != 0){
-                advert1();
-            }
-         */
 
 
 

@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
@@ -762,20 +763,7 @@ public class SubtractionActivity extends AppCompatActivity {
 
     public void advert1() {
 
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
-
-
-
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(testID);
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-        //ca-app-pub-7384642419407303/9880404420
-        //ca-app-pub-3940256099942544/1033173712 test
+        Appodeal.show(this, Appodeal.INTERSTITIAL);
     }
 
 
@@ -790,19 +778,7 @@ public class SubtractionActivity extends AppCompatActivity {
         Lifetime = subscribe.getInt("Lifetime", 4);
 
         if (Lifetime != 0){
-            mInterstitialAd = new InterstitialAd(this);
-            mInterstitialAd.setAdUnitId(testID);
-            mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-
-            MobileAds.initialize(this, new OnInitializationCompleteListener() {
-                @Override
-                public void onInitializationComplete(InitializationStatus initializationStatus) {
-                }
-            });
-            mAdView = findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
+            Appodeal.show(this, Appodeal.BANNER_TOP);
         }
 
         btReset = findViewById(R.id.btReset);

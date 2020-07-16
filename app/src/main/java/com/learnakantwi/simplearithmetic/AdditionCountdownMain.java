@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
@@ -28,33 +29,6 @@ public class AdditionCountdownMain extends AppCompatActivity {
         menuInflater.inflate(R.menu.main_menu, menu);
 
         return super.onCreateOptionsMenu(menu);
-
-
-        /*final MenuItem item = menu.findItem(R.id.menusearch);
-        SearchView searchView = (SearchView) item.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(AlphabetsActivity.this, query, Toast.LENGTH_SHORT).show();
-                return false;
-            }
-*/
-           /* @Override
-            public boolean onQueryTextChange(String newText) {
-                ArrayList<Alphabets> results = new ArrayList<>();
-                for (Alphabets x: alphabetArray){
-
-                    if(x.getBoth().contains(newText)){
-                        results.add(x);
-                    }
-
-                    ((AlphabetAdapter)myListView.getAdapter()).update(results);
-                }*/
-
-
-        /*        return false;
-            }
-        });*/
 
     }
 
@@ -114,9 +88,6 @@ public class AdditionCountdownMain extends AppCompatActivity {
             case "LEVEL 4" :
                 goToLevel(4,1,1000);
                 return;
-           /* case "DIVISION" :
-                goToDivision();
-                return;*/
             default:
                 goToLevel(1,0,50);
                 //Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
@@ -131,15 +102,7 @@ public class AdditionCountdownMain extends AppCompatActivity {
 
 
         if (MainActivity.Lifetime != 0){
-
-            MobileAds.initialize(this, new OnInitializationCompleteListener() {
-                @Override
-                public void onInitializationComplete(InitializationStatus initializationStatus) {
-                }
-            });
-            mAdView = findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
         }
 
 

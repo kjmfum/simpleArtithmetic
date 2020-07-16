@@ -38,6 +38,7 @@ import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.SkuDetails;
 import com.android.billingclient.api.SkuDetailsParams;
 import com.android.billingclient.api.SkuDetailsResponseListener;
+import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -81,6 +82,8 @@ Toast toast;
     int SPLASH_TIME_OUT = 3000;
     int times =0;
     static int Lifetime=5;
+
+    static final String APPODEAL_KEY = "28ebc6036493e3cc8eac32b49c843db3d75d13f26ee3f832";
 
 
 
@@ -635,6 +638,7 @@ public void goToAritmetic(View view){
         }
 
 
+        Appodeal.initialize(this, APPODEAL_KEY, Appodeal.BANNER | Appodeal.INTERSTITIAL, true);
 
         storageReference= FirebaseStorage.getInstance().getReference();
 
@@ -684,14 +688,8 @@ public void goToAritmetic(View view){
 
         if (Lifetime != 0){
 
-            MobileAds.initialize(this, new OnInitializationCompleteListener() {
-                @Override
-                public void onInitializationComplete(InitializationStatus initializationStatus) {
-                }
-            });
-            mAdView = findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
+
+                Appodeal.show(this, Appodeal.BANNER_BOTTOM);
         }
 
        toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
@@ -716,16 +714,8 @@ public void goToAritmetic(View view){
              btNoAds.setVisibility(View.GONE);
         }
 
-        if (Lifetime != 0){
-
-            MobileAds.initialize(this, new OnInitializationCompleteListener() {
-                @Override
-                public void onInitializationComplete(InitializationStatus initializationStatus) {
-                }
-            });
-            mAdView = findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
+        if (MainActivity.Lifetime != 0){
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
         }
 
     }

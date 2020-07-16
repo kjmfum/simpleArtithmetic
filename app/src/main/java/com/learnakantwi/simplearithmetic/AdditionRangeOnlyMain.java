@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -168,27 +169,8 @@ public class AdditionRangeOnlyMain extends AppCompatActivity {
         tvNegative.setText("Tap to INCLUDE NEGATIVE Integers");
 
         if (MainActivity.Lifetime != 0){
-
-            MobileAds.initialize(this, new OnInitializationCompleteListener() {
-                @Override
-                public void onInitializationComplete(InitializationStatus initializationStatus) {
-                }
-            });
-            mAdView = findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
         }
-
-      /*  btGoToAdditionActivity = findViewById(R.id.bt0to9);
-
-        btGoToAdditionActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToAddition0to9(minimum,maximum);
-            }
-        });*/
-
-
 
     }
 }

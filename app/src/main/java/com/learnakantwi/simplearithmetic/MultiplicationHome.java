@@ -92,10 +92,6 @@ public class MultiplicationHome extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void rangesCoundown(View view){
-        Intent intent = new Intent(getApplicationContext(), AdditionRangeOnlyMain.class);
-        startActivity(intent);
-    }
 
     public void multiplicationCountdown(){
         Intent intent = new Intent(getApplicationContext(), MultiplicationCountdownMain.class);

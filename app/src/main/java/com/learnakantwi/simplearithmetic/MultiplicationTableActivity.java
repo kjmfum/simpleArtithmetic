@@ -30,6 +30,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdRequest.Builder;
 import com.google.android.gms.ads.AdView;
@@ -717,16 +718,7 @@ public class MultiplicationTableActivity extends AppCompatActivity  implements M
 
     public void advert1() {
 
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
-
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(testID);
-        mInterstitialAd.loadAd(new Builder().build());
-
+        Appodeal.show(this, Appodeal.INTERSTITIAL);
     }
 
     public void playBackOne(){
@@ -903,6 +895,10 @@ public class MultiplicationTableActivity extends AppCompatActivity  implements M
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplication_table_rv_copy);
+
+        if (MainActivity.Lifetime != 0){
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        }
 
         if (5>2) {
             Numbers = new HashMap<>();
@@ -1302,22 +1298,7 @@ public class MultiplicationTableActivity extends AppCompatActivity  implements M
         recyclerView = findViewById(R.id.recyclerView);
 
 
-        if (MainActivity.Lifetime != 0){
 
-            mInterstitialAd = new InterstitialAd(this);
-            mInterstitialAd.setAdUnitId(testID);
-            mInterstitialAd.loadAd(new Builder().build());
-
-
-            MobileAds.initialize(this, new OnInitializationCompleteListener() {
-                @Override
-                public void onInitializationComplete(InitializationStatus initializationStatus) {
-                }
-            });
-            mAdView = findViewById(R.id.adView);
-            AdRequest adRequest = new Builder().build();
-            mAdView.loadAd(adRequest);
-        }
 
 
 
@@ -1398,9 +1379,9 @@ public class MultiplicationTableActivity extends AppCompatActivity  implements M
         int prob = random.nextInt(10);
 
         if (prob<8){
-            Log.i("advert", "came");
+           // Log.i("advert", "came");
             if (MainActivity.Lifetime != 0){
-                Log.i("advert", "came2");
+               // Log.i("advert", "came2");
                 advert1();
             }
         }
