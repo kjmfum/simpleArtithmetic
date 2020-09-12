@@ -986,10 +986,10 @@ public class AdditionFinishPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addition_finish_page);
 
-        if (MainActivity.Lifetime != 0){
-            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+     /*   if (MainActivity.Lifetime != 0){
+            Appodeal.show(this, Appodeal.BANNER_TOP);
         }
-
+*/
 
 
 
@@ -1018,6 +1018,10 @@ public class AdditionFinishPage extends AppCompatActivity {
            level = intent.getIntExtra("level",1);
             tvLastScore.setVisibility(View.VISIBLE);
             HighScoreList(level);
+
+            if (MainActivity.Lifetime != 0){
+                Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+            }
         }
 
         btGetName.setOnClickListener(new View.OnClickListener() {

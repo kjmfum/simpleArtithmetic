@@ -16,8 +16,6 @@
     <string name="AdUnitInterstitialID">  "ca-app-pub-7384642419407303/4594188966"</string>-->
 
 
-
-
     <string-array name="ArithmeticTypes">
         <item> Multiplication </item>
         <item> Addition </item>

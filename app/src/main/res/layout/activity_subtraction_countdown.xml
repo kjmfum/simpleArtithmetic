@@ -115,7 +115,7 @@
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/ic_remove_black_24dp"
+            android:src="@drawable/ic_subtraction"
             app:layout_constraintBottom_toBottomOf="@id/Horguideline40"
 
             app:layout_constraintEnd_toStartOf="@+id/Verguideline65"

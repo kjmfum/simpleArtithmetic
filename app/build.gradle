@@ -10,8 +10,8 @@ android {
         applicationId "com.learnakantwi.simplearithmetic"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 26
-        versionName "1.26"
+        versionCode 29
+        versionName "1.29"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

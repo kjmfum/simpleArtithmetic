@@ -13,13 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
+import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
-    public class MultiplicationRangeOnlyMain extends AppCompatActivity {
+public class MultiplicationRangeOnlyMain extends AppCompatActivity {
 
         Button btGoToAdditionActivity;
         AdView mAdView;
@@ -175,21 +172,14 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_multiplication_main);
+            setContentView(R.layout.activity_multipleoperations_rangeonlymain);
 
 
             tvNegative = findViewById(R.id.tvNegative);
             tvNegative.setText("Tap to INCLUDE NEGATIVE Integers");
 
             if (MainActivity.Lifetime != 0){
-                MobileAds.initialize(this, new OnInitializationCompleteListener() {
-                    @Override
-                    public void onInitializationComplete(InitializationStatus initializationStatus) {
-                    }
-                });
-                mAdView = findViewById(R.id.adView);
-                AdRequest adRequest = new AdRequest.Builder().build();
-                mAdView.loadAd(adRequest);
+                Appodeal.show(this, Appodeal.BANNER_BOTTOM);
             }
 
           /*  btGoToAdditionActivity = findViewById(R.id.bt0to9);

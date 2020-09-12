@@ -728,7 +728,7 @@ public class AdditionActivityCountdown extends AppCompatActivity {
         group.setVisibility(View.VISIBLE);
         etAnswer.setVisibility(View.INVISIBLE);
         countDownTimer = new CountDownTimer(1001*60*2,1000) {
-      //countDownTimer = new CountDownTimer(1000*20,1000) {
+     // countDownTimer = new CountDownTimer(1000*10,1000) {
             @Override
             public void onTick(long l) {
                 //tvCountdown.setText(5+ " : "+ 00);

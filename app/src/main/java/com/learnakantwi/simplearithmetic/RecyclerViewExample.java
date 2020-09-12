@@ -1,18 +1,10 @@
 package com.learnakantwi.simplearithmetic;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -56,7 +48,7 @@ public class RecyclerViewExample extends AppCompatActivity {
 
     String s1 [], s2 [];
     int images [] = {
-            R.drawable.ic_add_black_24dp, R.drawable.ic_clear_black_24dp, R.drawable.ic_remove_black_24dp, R.drawable.ic_divisionicon
+            R.drawable.ic_addition, R.drawable.ic_multiplication, R.drawable.ic_subtraction, R.drawable.ic_divisionicon
     };
 
     RecyclerView recyclerView;
@@ -72,9 +64,9 @@ public class RecyclerViewExample extends AppCompatActivity {
 
         arithmeticArrayList = new ArrayList<>();
 
-        arithmeticArrayList.add(new Arithmetic("Addition","Add",R.drawable.ic_add_black_24dp));
-        arithmeticArrayList.add(new Arithmetic("Multiplication","Multiply",R.drawable.ic_clear_black_24dp));
-        arithmeticArrayList.add(new Arithmetic("Subtraction","Subtract",R.drawable.ic_remove_black_24dp));
+        arithmeticArrayList.add(new Arithmetic("Addition","Add",R.drawable.ic_addition));
+        arithmeticArrayList.add(new Arithmetic("Multiplication","Multiply",R.drawable.ic_multiplication));
+        arithmeticArrayList.add(new Arithmetic("Subtraction","Subtract",R.drawable.ic_subtraction));
         arithmeticArrayList.add(new Arithmetic("Division","Divide",R.drawable.ic_divisionicon));
 
         s1 = getResources().getStringArray(R.array.ArithmeticTypes);

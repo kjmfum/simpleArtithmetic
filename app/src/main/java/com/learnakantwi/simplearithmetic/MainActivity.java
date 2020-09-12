@@ -39,11 +39,7 @@ import com.android.billingclient.api.SkuDetails;
 import com.android.billingclient.api.SkuDetailsParams;
 import com.android.billingclient.api.SkuDetailsResponseListener;
 import com.appodeal.ads.Appodeal;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -253,7 +249,12 @@ Toast toast;
     }
 
     public void goToDivision(){
-        Intent intent = new Intent(this, DivisionMain1.class);
+        Intent intent = new Intent(this, DivisionMain.class);
+        startActivity(intent);
+    }
+
+    public void goToMultiple(){
+        Intent intent = new Intent(this, MultipleOperationsSelect.class);
         startActivity(intent);
     }
 
@@ -276,6 +277,9 @@ public void goToAritmetic(View view){
             return;
         case "DIVISION" :
             goToDivision();
+            return;
+        case "MULTIPLE OPERATIONS" :
+            goToMultiple();
             return;
         case "LISTEN TO AUDIO OF MULTIPLICATION TABLE" :
             goToMultiplicationTable();

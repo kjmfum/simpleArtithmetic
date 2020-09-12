@@ -7,8 +7,6 @@
     tools:context=".MainActivity">
 
 
-
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
@@ -27,7 +25,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.2" />
-
 
     <Button
         android:id="@+id/btNoAds"
@@ -51,140 +48,185 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.3" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineHor35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
 
-
-    <Button
-        android:id="@+id/btAddition"
-        android:layout_width="0dp"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="10dp"
-        android:onClick="goToAritmetic"
-        android:text="ADDITION"
-        android:textColor="@color/white"
-        android:background="@color/blue"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/guidelineHor50"
-        app:layout_constraintEnd_toEndOf="@id/guidelineVer50"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guidelineHor35" />
-
-    <Button
-        android:id="@+id/btSubtraction"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="10dp"
-        android:onClick="goToAritmetic"
-        android:text="SUBTRACTION"
-        android:textColor="@color/white"
-        android:background="@color/blue"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/guidelineHor50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/guidelineVer50"
-        app:layout_constraintTop_toBottomOf="@id/guidelineHor35" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineHor50"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.50" />
-
-
-    <Button
-        android:id="@+id/btMultiplication"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="10dp"
-        android:onClick="goToAritmetic"
-        android:text="MULTIPLICATION"
-        android:textColor="@color/white"
-        android:background="@color/blue"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/guidelineHor65"
-        app:layout_constraintEnd_toEndOf="@id/guidelineVer50"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guidelineHor50"
-        app:layout_constraintVertical_bias="0.09" />
-
-    <Button
-        android:id="@+id/btDivision"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="10dp"
-        android:onClick="goToAritmetic"
-        android:text="DIVISION"
-        android:textColor="@color/white"
-        android:background="@color/blue"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/guidelineHor65"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guidelineVer50"
-        app:layout_constraintTop_toBottomOf="@id/guidelineHor50" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineHor65"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
-
-    <Button
-        android:id="@+id/btListenMultiplicationTable"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="10dp"
-        android:onClick="goToAritmetic"
-        android:text="LISTEN TO AUDIO OF MULTIPLICATION TABLE"
-        android:textColor="@color/black"
-        android:background="@color/colorGreen"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/guidelineHor75"
+        app:layout_constraintBottom_toTopOf="@id/adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guidelineHor65"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineHor40"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintTop_toTopOf="@id/guidelineHor30">
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineHor75"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineHor17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.17" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineHor2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.02" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineHor32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.32" />
 
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineVer50"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="vertical"
-        android:padding="20dp"
-        app:layout_constraintGuide_percent="0.5" />
+            <Button
+                android:id="@+id/btAddition"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/blue"
+                android:onClick="goToAritmetic"
+                android:text="ADDITION"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/guidelineHor17"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVer50"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/guidelineHor2" />
+
+            <Button
+                android:id="@+id/btSubtraction"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/blue"
+                android:onClick="goToAritmetic"
+                android:text="SUBTRACTION"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/guidelineHor17"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/guidelineVer50"
+                app:layout_constraintTop_toBottomOf="@id/guidelineHor2" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineHor100"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="1.0" />
+
+
+            <Button
+                android:id="@+id/btMultiplication"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/blue"
+                android:onClick="goToAritmetic"
+                android:text="MULTIPLICATION"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/guidelineHor32"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVer50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guidelineHor17"
+                app:layout_constraintVertical_bias="0.09" />
+
+            <Button
+                android:id="@+id/btDivision"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/blue"
+                android:onClick="goToAritmetic"
+                android:text="DIVISION"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/guidelineHor32"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guidelineVer50"
+                app:layout_constraintTop_toBottomOf="@id/guidelineHor17" />
+
+
+            <Button
+                android:id="@+id/btListenMultiplicationTable"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorGreen"
+                android:onClick="goToAritmetic"
+                android:text="LISTEN TO AUDIO OF MULTIPLICATION TABLE"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/guidelineHor47"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guidelineHor32"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/btMultipleOperations"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/blue"
+                android:onClick="goToAritmetic"
+                android:text="MULTIPLE OPERATIONS"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/guidelineHor62"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guidelineHor47"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineHor62"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.62" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineHor47"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.47" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVer50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="vertical"
+                android:padding="20dp"
+                app:layout_constraintGuide_percent="0.5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 
 
     <com.google.android.gms.ads.AdView

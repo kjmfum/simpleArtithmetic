@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MultipleOperationsSelect">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:weightSum="10"
+        app:layout_constraintBottom_toTopOf="@id/guidelineHor15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:background="@color/white"
+            android:src="@drawable/simplemathicon" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:layout_weight="5">
+
+
+            <ImageView
+                android:id="@+id/icAddition"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_addition"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:layout_weight="25"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/icSubtraction"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_subtraction"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:layout_weight="25"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/icMultiplication"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_multiplication"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:layout_weight="25"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/icDivision"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_divisionicon"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:layout_weight="25"
+                android:visibility="invisible"/>
+
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineHor15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guidelineHor15"
+            app:layout_constraintBottom_toTopOf="@id/guideline20"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="CHOOSE AT LEAST TWO OPERATIONS">
+
+        </TextView>
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.20" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:weightSum="100"
+                app:layout_constraintTop_toTopOf="@id/guideline20"
+                app:layout_constraintBottom_toTopOf="@id/guideline70"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+
+                <ImageButton
+                    android:layout_margin="5dp"
+                    android:id="@+id/btAddition"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="25"
+                    android:src="@drawable/ic_addition">
+                </ImageButton>
+
+                <ImageButton
+                    android:layout_margin="5dp"
+                    android:id="@+id/btSubtraction"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="25"
+                    android:src="@drawable/ic_subtraction">
+                </ImageButton>
+
+                <ImageButton
+                    android:layout_margin="5dp"
+                    android:id="@+id/btMultiplication"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="25"
+                    android:src="@drawable/ic_multiplication">
+                </ImageButton>
+
+                <ImageButton
+                    android:layout_margin="5dp"
+                    android:id="@+id/btDivision"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="25"
+                    android:src="@drawable/ic_divisionicon">
+                </ImageButton>
+
+            </LinearLayout>
+
+
+
+
+
+        <Button
+            android:id="@+id/btContinue"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintTop_toTopOf="@id/guideline70"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:background="@color/blue"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:text="CONTINUE">
+        </Button>
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="SMART_BANNER"
+        app:adUnitId="@string/AdUnitBannerID"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

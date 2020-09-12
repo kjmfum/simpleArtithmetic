@@ -4,15 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -21,21 +20,7 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 
 public class DivisionMain extends AppCompatActivity {
 
-
-    Button btGoToAdditionActivity;
     AdView mAdView;
-
-    TextView tvChooseRange;
-    TextView tvChooseDivisor;
-
-    String stMinimum;
-    String stMaximum;
-    String choiceRange;
-    String choiceDivisor;
-
-    int minimum = 0;
-    int maximum = 10;
-    int divisor=1;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -101,103 +86,71 @@ public class DivisionMain extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToDivision0to9(int minimum, int maximum, int divisor){
-        //Intent intent = new Intent(this, additionActivity.class);
-        //startActivity(intent);
 
-
-        // Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.udemy.com/course/learn-akan-twi/?referralCode=6D321CE6AEE1834CCB0F"));
-        Intent intent = new Intent(this, DivisionActivity.class);
-        intent.putExtra  ("min", minimum);
-        intent.putExtra  ("max", maximum);
-        intent.putExtra  ("divisor", divisor);
+    public void practiseRanges(){
+        Intent intent = new Intent(getApplicationContext(), DivisionMainRangeOnly.class);
         startActivity(intent);
     }
 
-    public void getRangeFromButton(View view){
-        int idview = view.getId();
-
-        Button rangeButton = findViewById(idview);
-
-        String rangeButtonText= rangeButton.getText().toString();
-
-
-        if (rangeButtonText.contains("-")){
-            int minimumIndex = rangeButtonText.indexOf("-");
-            stMinimum = rangeButtonText.substring(0 , minimumIndex);
-            stMaximum = rangeButtonText.substring(minimumIndex+1);
-            try {
-                minimum = Integer.parseInt(stMinimum);
-                maximum = Integer.parseInt(stMaximum);
-
-                tvChooseRange.setText("Range: "+ rangeButtonText);
-                choiceRange = "selected";
-                if (choiceDivisor.equals("selected")&&choiceRange.equals("selected")){
-                    goToDivision0to9(minimum,maximum,divisor);
-                }
-
-
-            }catch (Exception e){
-                Log.i("Error", e.toString());
-            }
-           // Toast.makeText(this, minimum + "\n"+ maximum, Toast.LENGTH_SHORT).show();
-        }
-        else{
-            try {
-                divisor = Integer.parseInt(rangeButtonText);
-                tvChooseDivisor.setText("Divisor:  "+rangeButtonText);
-                choiceDivisor = "selected";
-
-                if (choiceDivisor.equals("selected")&&choiceRange.equals("selected")){
-                    // Toast.makeText(this, "selected o", Toast.LENGTH_SHORT).show();
-                    goToDivision0to9(minimum,maximum,divisor);
-                }
-            }
-            catch (Exception e){
-                Log.i("Error", e.toString());
-            }
-        }
-
-
-
-        /* minimum = Integer.parseInt(rangeButtonText); */
-        //goToDivision0to9(minimum);
-
-
-       // Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-
+    public void rangesCoundown(View view){
+        Intent intent = new Intent(getApplicationContext(), AdditionRangeOnlyMain.class);
+        startActivity(intent);
     }
+
+    public void multiplicationCountdown(){
+        Intent intent = new Intent(getApplicationContext(), DivisionCountdownMain.class);
+        startActivity(intent);
+    }
+
+    public void numberToDivide (){
+        Intent intent = new Intent(getApplicationContext(), DivisionNumberRangeMain.class);
+        startActivity(intent);
+    }
+
+    public void goToHighScores(){
+        Intent intent = new Intent(getApplicationContext(), DivisionHighScores.class);
+        startActivity(intent);
+    }
+
+    public void goToDivisionType (View view){
+        int idview = view.getId();
+        Button me = view.findViewById(idview);
+
+        String arithmeticType = me.getText().toString();
+
+        switch(arithmeticType){
+            case "PRACTISE WITH RANGES ONLY" :
+                practiseRanges();
+                return;
+            case "PRACTISE A NUMBER TO A RANGE" :
+                numberToDivide();
+                return;
+            case "COUNTDOWN TEST" :
+                multiplicationCountdown();
+                return;
+            case "HIGH SCORES" :
+                goToHighScores();
+                return;
+           /* case "DIVISION" :
+                goToDivision();
+                return;*/
+            default:
+                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_division_main);
-
-        tvChooseDivisor= findViewById(R.id.tvDivisor);
-        tvChooseRange= findViewById(R.id.tvRange);
+        setContentView(R.layout.activity_division_main1);
 
         if (MainActivity.Lifetime != 0){
-            MobileAds.initialize(this, new OnInitializationCompleteListener() {
-                @Override
-                public void onInitializationComplete(InitializationStatus initializationStatus) {
-                }
-            });
-            mAdView = findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
         }
-
-
     }
+}
 
 
-    @Override
-    protected void onResume() {
-        tvChooseRange.setText("CHOOSE RANGE (SCROLL)");
-        choiceDivisor="nothing";
-        tvChooseDivisor.setText("CHOOSE NUMBER (SCROLL)");
-        choiceRange="nothing";
-        super.onResume();
-    }
-    }

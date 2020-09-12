@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
@@ -571,17 +572,9 @@ public class SubtractionFinishPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addition_finish_page);
 
-        if (MainActivity.Lifetime != 0){
-
-            MobileAds.initialize(this, new OnInitializationCompleteListener() {
-                @Override
-                public void onInitializationComplete(InitializationStatus initializationStatus) {
-                }
-            });
-            mAdView = findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
-        }
+   /*     if (MainActivity.Lifetime != 0){
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        }*/
 
 
 
@@ -610,6 +603,10 @@ public class SubtractionFinishPage extends AppCompatActivity {
             level = intent.getIntExtra("level",1);
             tvLastScore.setVisibility(View.VISIBLE);
             HighScoreList(level);
+
+            if (MainActivity.Lifetime != 0){
+                Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+            }
         }
 
         btGetName.setOnClickListener(new View.OnClickListener() {
@@ -619,6 +616,7 @@ public class SubtractionFinishPage extends AppCompatActivity {
                 // Toast.makeText(AdditionFinishPage.this, playerName, Toast.LENGTH_SHORT).show();
                 group2.setVisibility(View.GONE);
                 tvLastScore.setVisibility(View.VISIBLE);
+
 
                 if (coming!=null && coming.equals("yes")){
                     newHighScoreList(level);

@@ -569,9 +569,7 @@ public class DivisionFinishPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addition_finish_page);
 
-        if (MainActivity.Lifetime != 0){
-            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
-        }
+
 
 
         tvLastScore = findViewById(R.id.tvHighScores);
@@ -599,6 +597,11 @@ public class DivisionFinishPage extends AppCompatActivity {
             level = intent.getIntExtra("level",1);
             tvLastScore.setVisibility(View.VISIBLE);
             HighScoreList(level);
+
+            if (MainActivity.Lifetime != 0){
+                Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+            }
+
         }
 
         btGetName.setOnClickListener(new View.OnClickListener() {
