@@ -2,7 +2,6 @@ package com.learnakantwi.simplearithmetic;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.HorizontalScrollView;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -100,8 +98,19 @@ public class MultiplicationTableMain extends AppCompatActivity implements MyAdap
 
         recyclerView = findViewById(R.id.recyclerView);
 
-        if (MainActivity.Lifetime != 0){
+       /* if (MainActivity.Lifetime != 0){
             Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        }*/
+
+        if (MainActivity.Lifetime != 0) {
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
         }
 
         numbersArray = new ArrayList<>();

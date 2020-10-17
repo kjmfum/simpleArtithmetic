@@ -13,7 +13,7 @@
     <string name="AdUnitInterstitialID">  "ca-app-pub-7384642419407303/4594188966"</string>
 
     <!--<string name="AdUnitBannerID">  "ca-app-pub-3940256099942544/6300978111"</string>
-    <string name="AdUnitInterstitialID">  "ca-app-pub-7384642419407303/4594188966"</string>-->
+       <string name="AdUnitInterstitialID">  "ca-app-pub-7384642419407303/4594188966"</string>-->
 
 
     <string-array name="ArithmeticTypes">

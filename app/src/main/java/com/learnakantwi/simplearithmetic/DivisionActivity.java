@@ -2,7 +2,6 @@ package com.learnakantwi.simplearithmetic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -12,8 +11,6 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -767,8 +764,19 @@ public class DivisionActivity extends AppCompatActivity {
         SharedPreferences subscribe = getSharedPreferences("AdsDecisionSimpleArithmetic",MODE_PRIVATE);
         Lifetime = subscribe.getInt("Lifetime", 4);
 
-        if (Lifetime != 0){
+       /* if (Lifetime != 0){
             Appodeal.show(this, Appodeal.BANNER_TOP);
+        }*/
+
+        if (MainActivity.Lifetime != 0) {
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
         }
 
         /*

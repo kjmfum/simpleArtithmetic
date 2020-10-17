@@ -3,7 +3,6 @@ package com.learnakantwi.simplearithmetic;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.Group;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,7 +10,6 @@ import android.Manifest;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
@@ -32,7 +30,6 @@ import android.widget.Toast;
 
 import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdRequest.Builder;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
@@ -60,6 +57,7 @@ public class MultiplicationTableActivity extends AppCompatActivity  implements M
 
     static ArrayList<String> timesTableArray;
    static HashMap<Integer, String> Numbers;
+
 
     TextView tvHeading;
 
@@ -692,27 +690,43 @@ public class MultiplicationTableActivity extends AppCompatActivity  implements M
     @Override
     public void onMyItemClick(int position, View view) {
 
-
+       // Toast.makeText(this, "Yipee", Toast.LENGTH_SHORT).show();
         Log.i("Hello", "Count: "+count +" position: "+position);
 
-        if(count != -1 ){
-            handler1.removeCallbacks(ranable);
-            if (playFromDevice!=null){
-                playFromDevice.stop();
+        if (!downloaded()) {
+            toast.setText("Please Wait For All Audio To Download\nAnd Try Again");
+            toast.show();
+            try{
+                downloadAll();
+                deleteDuplicatelDownload();
+                // Log.i("Check", "Worked: ");
             }
-
-        }
-
-//        handler1 = new Handler();
-        count =position;
-
-        if (slideshowBool){
-            handler1.postDelayed(ranable, 2);
+            catch(Exception e){
+                Log.i("Check", "failed: "+ e.toString());
+            }
+            // Toast.makeText(this, "Please Connect to Internet to Download Audio", Toast.LENGTH_SHORT).show();
         }
         else{
-            getNumbersInt(count);
-            playNumbers();
+            if(count != -1 ){
+                handler1.removeCallbacks(ranable);
+                if (playFromDevice!=null){
+                    playFromDevice.stop();
+                }
+
+            }
+
+//        handler1 = new Handler();
+            count =position;
+
+            if (slideshowBool){
+                handler1.postDelayed(ranable, 2);
+            }
+            else{
+                getNumbersInt(count);
+                playNumbers();
+            }
         }
+
     }
 
 
@@ -896,11 +910,22 @@ public class MultiplicationTableActivity extends AppCompatActivity  implements M
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multiplication_table_rv_copy);
 
-        if (MainActivity.Lifetime != 0){
+       /* if (MainActivity.Lifetime != 0){
             Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        }*/
+
+        if (MainActivity.Lifetime != 0) {
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
         }
 
-        if (5>2) {
+      /*  if (5>2) {
             Numbers = new HashMap<>();
             Numbers.put(1, "one");
             Numbers.put(2, "two");
@@ -999,7 +1024,7 @@ public class MultiplicationTableActivity extends AppCompatActivity  implements M
             Numbers.put(86, "eightysix");
             Numbers.put(87, "eightyseven");
             Numbers.put(88, "eightyeight");
-            Numbers.put(89, "eightyeight");
+            Numbers.put(89, "eightynine");
 
             Numbers.put(90, "ninety");
             Numbers.put(91, "ninetyone");
@@ -1056,7 +1081,7 @@ public class MultiplicationTableActivity extends AppCompatActivity  implements M
             Numbers.put(9000, "ninethousand");
             Numbers.put(10000, "tenthousand");
 
-        }
+        }*/
 
         if(downloaded()){
             Toast.makeText(this, "Tap to Listen", Toast.LENGTH_SHORT).show();
@@ -1216,13 +1241,26 @@ public class MultiplicationTableActivity extends AppCompatActivity  implements M
             @Override
             public void onClick(View view) {
 
-               String btSlideshowText = btSlideshow.getText().toString().toLowerCase();
+                String btSlideshowText = btSlideshow.getText().toString().toLowerCase();
 
-               if (btSlideshowText.equals("start slideshow")){
-                   Log.i("slide", "Yes");
-                   btSlideshow.setText("End Slideshow");
-                   slideshowBool = true;
-                   startSlideShow1(view);
+                if (!downloaded()) {
+                     toast.setText("Please Wait For All Audio To Download\nAnd Try Again");
+                     toast.show();
+                    try{
+                        downloadAll();
+                        deleteDuplicatelDownload();
+                       // Log.i("Check", "Worked: ");
+                    }
+                    catch(Exception e){
+                        Log.i("Check", "failed: "+ e.toString());
+                    }
+                    // Toast.makeText(this, "Please Connect to Internet to Download Audio", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (btSlideshowText.equals("start slideshow")) {
+                        Log.i("slide", "Yes");
+                        btSlideshow.setText("End Slideshow");
+                        slideshowBool = true;
+                        startSlideShow1(view);
                    /*if (etFirstNumber==null){
                        etFirstNumber.setText("2");
                        slideStartNumberInt =2;
@@ -1232,45 +1270,45 @@ public class MultiplicationTableActivity extends AppCompatActivity  implements M
                        slideEndNumberInt =12;
                    }*/
 
-                 //  onMyItemClick(slideStartNumberInt-1, view);
-                   recyclerView.setVisibility(View.INVISIBLE);
-                   tvSlides.setVisibility(View.VISIBLE);
-                   btPlayNext.setVisibility(View.VISIBLE);
-                   btPlayPause.setVisibility(View.VISIBLE);
-                   btPlayPrevious.setVisibility(View.VISIBLE);
-                   btPlayRepeatOne.setVisibility(View.VISIBLE);
-                  // btPlay.setVisibility(View.VISIBLE);
-                   // groupSlides.setVisibility(View.VISIBLE);
-                  // etFirstNumber.setVisibility(View.VISIBLE);
-                   //etEndNumber.setVisibility(View.VISIBLE);
-                   //tvFirstNumber.setVisibility(View.VISIBLE);
-                   //tvEndNumber.setVisibility(View.VISIBLE);
+                        //  onMyItemClick(slideStartNumberInt-1, view);
+                        recyclerView.setVisibility(View.INVISIBLE);
+                        tvSlides.setVisibility(View.VISIBLE);
+                        btPlayNext.setVisibility(View.VISIBLE);
+                        btPlayPause.setVisibility(View.VISIBLE);
+                        btPlayPrevious.setVisibility(View.VISIBLE);
+                        btPlayRepeatOne.setVisibility(View.VISIBLE);
+                        // btPlay.setVisibility(View.VISIBLE);
+                        // groupSlides.setVisibility(View.VISIBLE);
+                        // etFirstNumber.setVisibility(View.VISIBLE);
+                        //etEndNumber.setVisibility(View.VISIBLE);
+                        //tvFirstNumber.setVisibility(View.VISIBLE);
+                        //tvEndNumber.setVisibility(View.VISIBLE);
 
-               }
-               else{
-                   Log.i("slide", "No: "+ btSlideshowText);
-                   btSlideshow.setText("Start Slideshow");
-                   slideshowBool = false;
-                   //startSlideShow1(view);
+                    } else {
+                        Log.i("slide", "No: " + btSlideshowText);
+                        btSlideshow.setText("Start Slideshow");
+                        slideshowBool = false;
+                        //startSlideShow1(view);
 
-                   if (handler1 !=null){
-                       handler1.removeCallbacks(ranable);
-                   }
-                   if (playFromDevice!=null){
-                       playFromDevice.stop();
-                   }
-                   recyclerView.setVisibility(View.VISIBLE);
-                   tvSlides.setVisibility(View.INVISIBLE);
-                   btPlayNext.setVisibility(View.INVISIBLE);
-                   btPlayPause.setVisibility(View.INVISIBLE);
-                   btPlayPrevious.setVisibility(View.INVISIBLE);
-                   btPlay.setVisibility(View.INVISIBLE);
-                   btPlayRepeatOne.setVisibility(View.INVISIBLE);
-                   btPlayRepeatOne.setBackgroundColor(Color.WHITE);
-                   repeat=false;
+                        if (handler1 != null) {
+                            handler1.removeCallbacks(ranable);
+                        }
+                        if (playFromDevice != null) {
+                            playFromDevice.stop();
+                        }
+                        recyclerView.setVisibility(View.VISIBLE);
+                        tvSlides.setVisibility(View.INVISIBLE);
+                        btPlayNext.setVisibility(View.INVISIBLE);
+                        btPlayPause.setVisibility(View.INVISIBLE);
+                        btPlayPrevious.setVisibility(View.INVISIBLE);
+                        btPlay.setVisibility(View.INVISIBLE);
+                        btPlayRepeatOne.setVisibility(View.INVISIBLE);
+                        btPlayRepeatOne.setBackgroundColor(Color.WHITE);
+                        repeat = false;
 
-               }
+                    }
 
+                }
             }
         });
 

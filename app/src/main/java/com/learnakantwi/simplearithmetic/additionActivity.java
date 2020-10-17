@@ -3,7 +3,6 @@ package com.learnakantwi.simplearithmetic;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -1068,15 +1067,15 @@ public class additionActivity extends AppCompatActivity {
             mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
 
-            Appodeal.show(this, Appodeal.BANNER_TOP);
-           /* MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            //Appodeal.show(this, Appodeal.BANNER_TOP);
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {
                 }
             });
             mAdView = findViewById(R.id.adView);
             AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);*/
+            mAdView.loadAd(adRequest);
         }
 
 

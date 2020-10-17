@@ -610,8 +610,19 @@ public class DivisionRangeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_division_range);
 
-        if (MainActivity.Lifetime != 0){
+       /* if (MainActivity.Lifetime != 0){
             Appodeal.show(this, Appodeal.BANNER_TOP);
+        }*/
+
+        if (MainActivity.Lifetime != 0) {
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
         }
 
 

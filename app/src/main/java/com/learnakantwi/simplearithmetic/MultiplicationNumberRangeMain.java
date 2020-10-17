@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.AdRequest;
@@ -174,8 +173,19 @@ public class MultiplicationNumberRangeMain extends AppCompatActivity {
         tvChooseDivisor= findViewById(R.id.tvDivisor);
         tvChooseRange= findViewById(R.id.tvRange);
 
-        if (MainActivity.Lifetime != 0){
+      /*  if (MainActivity.Lifetime != 0){
             Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        }*/
+
+        if (MainActivity.Lifetime != 0) {
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
         }
     }
 

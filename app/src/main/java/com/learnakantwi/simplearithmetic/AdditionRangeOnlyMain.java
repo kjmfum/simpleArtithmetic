@@ -168,8 +168,19 @@ public class AdditionRangeOnlyMain extends AppCompatActivity {
         tvNegative = findViewById(R.id.tvNegative);
         tvNegative.setText("Tap to INCLUDE NEGATIVE Integers");
 
-        if (MainActivity.Lifetime != 0){
+       /* if (MainActivity.Lifetime != 0){
             Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        }*/
+
+        if (MainActivity.Lifetime != 0) {
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
         }
 
     }

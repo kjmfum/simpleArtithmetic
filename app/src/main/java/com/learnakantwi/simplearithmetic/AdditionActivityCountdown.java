@@ -7,11 +7,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -726,7 +724,7 @@ public class AdditionActivityCountdown extends AppCompatActivity {
     public void startTest(){
         btStart.setVisibility(View.GONE);
         group.setVisibility(View.VISIBLE);
-        etAnswer.setVisibility(View.INVISIBLE);
+       // etAnswer.setVisibility(View.INVISIBLE);
         countDownTimer = new CountDownTimer(1001*60*2,1000) {
      // countDownTimer = new CountDownTimer(1000*10,1000) {
             @Override
@@ -866,20 +864,17 @@ public class AdditionActivityCountdown extends AppCompatActivity {
             mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
 
-            Appodeal.show(this, Appodeal.BANNER_TOP);
-            /*MobileAds.initialize(this, new OnInitializationCompleteListener() {
+           // Appodeal.show(this, Appodeal.BANNER_TOP);
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
                 @Override
                 public void onInitializationComplete(InitializationStatus initializationStatus) {
                 }
             });
             mAdView = findViewById(R.id.adView);
             AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);*/
+            mAdView.loadAd(adRequest);
         }
 
-        /*
-
-         */
 
         countDownTimer = new CountDownTimer(1000 * 60 * 1, 1000) {
             @Override
@@ -943,6 +938,11 @@ public class AdditionActivityCountdown extends AppCompatActivity {
         etAnswer = findViewById(R.id.etAnswerText);
 
         etAnswer.setText("");
+
+
+        //check
+
+       //  btStart.setVisibility(View.INVISIBLE);
 
         tvFirstNumber = findViewById(R.id.tvFirstNumber);
         tvSecondNumber = findViewById(R.id.tvSecondNumber);

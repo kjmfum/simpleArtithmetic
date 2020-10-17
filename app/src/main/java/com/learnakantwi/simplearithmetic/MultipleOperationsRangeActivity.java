@@ -459,7 +459,7 @@ public class MultipleOperationsRangeActivity extends AppCompatActivity {
 
         firstPick =  String.valueOf(number);
 
-        etAnswer.setText("Hi"+firstPick+ " "+ answerLength);
+       // etAnswer.setText("Hi"+firstPick+ " "+ answerLength);
 
 
 

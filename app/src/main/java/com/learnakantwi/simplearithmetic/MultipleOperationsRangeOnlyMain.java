@@ -14,7 +14,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.appodeal.ads.Appodeal;
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class MultipleOperationsRangeOnlyMain extends AppCompatActivity {
 
@@ -178,10 +182,20 @@ public class MultipleOperationsRangeOnlyMain extends AppCompatActivity {
         tvNegative = findViewById(R.id.tvNegative);
         tvNegative.setText("Tap to INCLUDE NEGATIVE Integers");
 
-        if (MainActivity.Lifetime != 0){
+       /* if (MainActivity.Lifetime != 0){
             Appodeal.show(this, Appodeal.BANNER_BOTTOM);
-        }
+        }*/
 
+        if (MainActivity.Lifetime != 0) {
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+            mAdView = findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
       /*  btGoToAdditionActivity = findViewById(R.id.bt0to9);
 
         btGoToAdditionActivity.setOnClickListener(new View.OnClickListener() {
