@@ -33,6 +33,11 @@
         android:id="@+id/dailyNotificationOff">
     </item>
 
+    <item
+        android:title="GAMES"
+        android:id="@+id/games">
+    </item>
+
 
 <!--    <item
         android:title="@string/Quiz"

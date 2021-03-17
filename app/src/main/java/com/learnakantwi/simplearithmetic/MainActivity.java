@@ -60,6 +60,7 @@ import static com.learnakantwi.simplearithmetic.MultiplicationTableActivity.Numb
 public class MainActivity extends AppCompatActivity implements PurchasesUpdatedListener, PurchaseHistoryResponseListener {
 
 Button btAddition;
+Button btGames;
 Button btSubtraction;
 Button btMultiplication;
 Button btDivision;
@@ -142,8 +143,8 @@ Toast toast;
             case R.id.oneMinuteTraining:
                 goToOneMinuteTraining();
                 return  true;
-            case R.id.main:
-                goToMain();
+            case R.id.games:
+                goToGames();
                 return  true;
             case R.id.dailyNotification:
                 //Log.i("Menu Item Selected", "Alphabets");
@@ -262,6 +263,11 @@ Toast toast;
         startActivity(intent);
     }
 
+    public void goToGames(){
+        Intent intent = new Intent(this, Games.class);
+        startActivity(intent);
+    }
+
 
 public void goToAritmetic(View view){
     int idview = view.getId();
@@ -284,6 +290,9 @@ public void goToAritmetic(View view){
             return;
         case "MULTIPLE OPERATIONS" :
             goToMultiple();
+            return;
+        case "GAMES" :
+            goToGames();
             return;
         case "LISTEN TO AUDIO OF MULTIPLICATION TABLE" :
             goToMultiplicationTable();
@@ -720,6 +729,7 @@ public void goToAritmetic(View view){
         btMultiplication = findViewById(R.id.btMultiplication);
         btDivision = findViewById(R.id.btDivision);
         btMultiplicationTable = findViewById(R.id.btListenMultiplicationTable);
+        btGames = findViewById(R.id.btGames);
     }
 
 
